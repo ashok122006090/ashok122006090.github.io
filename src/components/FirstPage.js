@@ -11,6 +11,8 @@ import Header
  import AboutUs from './AboutUs';
  import GetPatient from './Patient/GetPatient';
 import ViewDoctors from './Doctor/ViewDoctors';
+import BookAppointment from './Appointment/BookAppointment';
+import AddAppointment from './Appointment/AddAppointment';
 function FirstPage(){
     return (
         <div>
@@ -21,7 +23,7 @@ function FirstPage(){
          <Navbar.Brand style={{letterSpacing:'2px',textShadow: '1px 1px gray',fontSize:'24px'}} href="/"><>SmartCovidClinicApp</></Navbar.Brand>
          <Nav className="me-auto">
            <Nav.Link href="/">Home</Nav.Link>
-           <Nav.Link href="/">Book appointment</Nav.Link>
+           <Nav.Link href="/Appointment">Book appointment</Nav.Link>
            <Nav.Link href="/doctor">AdminManagement</Nav.Link>
             
            <Nav.Link href="/about">About Us</Nav.Link>
@@ -46,7 +48,8 @@ function FirstPage(){
                {/* <Route exact path='/doctors/deleteDoctorsById/:doctorId' element={<DeleteDoctor/>} /> */}
 
                <Route exact path='/getPatient' element={<GetPatient/>} />
-               
+               <Route exact path='/Appointment' element={<BookAppointment/>} />
+               {/* <Route exact path='/appointment' element={<AddAppointment/>} /> */}
 
                <Route path="/about" element={<AboutUs></AboutUs>} />
               </Routes>

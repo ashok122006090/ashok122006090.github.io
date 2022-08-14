@@ -1,7 +1,8 @@
 class Appointment {
+     appointmentId='';
 appointment_date ='';
      symptoms ='';
-     doctorid = '';
-     patient_id =''
+     doctorId = '';
+     patientId =''
 }
 export default Appointment;
