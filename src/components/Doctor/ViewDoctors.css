@@ -1,0 +1,46 @@
+img{
+    height: auto;
+    width:300px;
+    float: right;
+ }
+ h1,h2{
+    font-style: italic;
+ }
+ .search-container{
+     
+    background-image:linear-gradient(rgba(0,0,0,0.75),rgba(0,0,0,0.75)),url(https://i.pinimg.com/originals/33/ef/8b/33ef8b9c0b902154a6cd4103a21275ef.jpg);
+     height: 230px;
+     /* background-repeat: no-repeat;
+     background-size: cover; */
+     text-align: center;
+     justify-content: center;
+ }
+label{
+    font-style: italic;
+    color: cornsilk;
+    height: 20px;
+}
+.letsgo-btn{
+    margin: 20px;
+}
+form{
+    align-items: center;
+}
+.Box{
+    height: 200px;
+    border-style: solid ;
+    border-radius: 10px;
+}
+.card-container{
+    height: 200px;
+    
+}
+.cardtext{
+    padding-top: 10px;
+    padding-left: 10px;
+   
+}
+h4,h5{
+    font-style: italic;
+    color: crimson;
+}
