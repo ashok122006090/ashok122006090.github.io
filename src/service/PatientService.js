@@ -3,7 +3,7 @@ import AddPatient from '../components/Patient/AddPatient';
 class PatientService {
     baseUrl = `http://localhost:8082/patient`;
     getPatient() {
-        alert("inside get all patient")
+       // alert("inside get all patient")
         return axios.get(this.baseUrl);
     }
     addPatient(patient) {

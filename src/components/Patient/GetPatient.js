@@ -16,7 +16,7 @@ class GetPatient extends React.Component {
     componentDidMount() {
        this.patientService.getPatient()
             .then((result) => {
-               alert(JSON.stringify(result));
+             //  alert(JSON.stringify(result));
                 this.setState({ patient: result.data });
             })
             .catch((error) => {
@@ -42,19 +42,19 @@ class GetPatient extends React.Component {
                                 </thead>
                                 <tbody>
                                     {
-                                        this.state.patient.map((doc) =>
+                                        this.state.patient.map((pat) =>
                                         (
                                             <tr>
-                                                <td>{doc.patientId}</td>
-                                                <td>{doc.patientName}</td>
-                                                <td>{doc.patientAge}</td>
-                                                <td>{doc.patientContactNo}</td>
+                                                <td>{pat.patientId}</td>
+                                                <td>{pat.patientName}</td>
+                                                <td>{pat.patientAge}</td>
+                                                <td>{pat.patientContactNo}</td>
                                                  
-                                                <td><Link className="btn btn-warning" to={{ pathname: `/patient/update/${doc.patientId}`}}>Update</Link></td>
+                                                <td><Link className="btn btn-warning" to={{ pathname: `/patient/update/${pat.patientId}`}}>Update</Link></td>
                                                 <td><button className="btn btn-danger"
                                                     onClick={(e) => {
                                                         e.preventDefault();
-                                                         this.empService.deletePatientById(doc.patientId)
+                                                         this.patientService.deletePatientById(pat.patientId)
                                                             .then((result) => {
                                                                 //alert("data called "+result.data)
                                                                 this.patientService.getPatient()
@@ -62,11 +62,11 @@ class GetPatient extends React.Component {
                                                                     this.setState({ patient: result2.data });
                                                                 })
                                                                 .catch((error) => {
-                                                                    alert("error");
+                                                                    alert("cant delete");
                                                                 });
                                                             })
                                                             .catch((error) => {
-                                                                alert("error");
+                                                                alert("cant delete");
                                                             });
                                                       
                                                       

@@ -13,6 +13,10 @@ import Header
 import ViewDoctors from './Doctor/ViewDoctors';
 import BookAppointment from './Appointment/BookAppointment';
 import AddAppointment from './Appointment/AddAppointment';
+import AdminLogin from './AdminLogin/AdminLogin';
+import HomePage from './HomePage';
+import Signup from './SignUp/Signup';
+//import AddDoctors from './Doctor/AddDoctors';
 function FirstPage(){
     return (
         <div>
@@ -24,9 +28,10 @@ function FirstPage(){
          <Nav className="me-auto">
            <Nav.Link href="/">Home</Nav.Link>
            <Nav.Link href="/Appointment">Book appointment</Nav.Link>
-           <Nav.Link href="/doctor">AdminManagement</Nav.Link>
+           <Nav.Link href="/adminlogin">AdminManagement</Nav.Link>
             
            <Nav.Link href="/about">About Us</Nav.Link>
+           <Nav.Link href="/signup">SignUp</Nav.Link>
           
          </Nav>
          </Container>
@@ -35,21 +40,30 @@ function FirstPage(){
          
           
               <Routes>
+              <Route path="" element={<HomePage></HomePage>} />
               {/* <Route exact path="/" component={ShowEmployee} /> */}
               <Route exact path="/" element={<Background></Background>}/>
-              <Route path="/doctor" element={<DoctorDash></DoctorDash>} />
+              <Route path="/adminlogin" element={<AdminLogin></AdminLogin>} />
               {/* <Route path="/modules" element={<ModuleList></ModuleList>} /> */}
-              <Route exact path='/doctor/getDoctor' element={<GetDoctor/>} />
+              <Route exact path='/DoctorDash/GetDoctor' element={<GetDoctor/>} />
+              <Route exact path='/DoctorDash/AddDoctors' element={<AddDoctors/>} />
               
-              <Route exact path='/doctors/addDoctors' element={<AddDoctors/>} />
-               <Route exact path='/doctors/updateDoctors' element={<UpdateDoctor/>} />
-               <Route exact path='/doctors/viewDoctors' element={<ViewDoctors/>} />
+              <Route exact path='/adminlogin/doctors/addDoctors' element={<AddDoctors/>} />
+               <Route exact path='/DoctorDash/GetDoctor/updateDoctors' element={<UpdateDoctor/>} />
+               <Route exact path='/adminlogin/doctors/viewDoctors' element={<ViewDoctors/>} />
+               <Route exact path='/DoctorDash/GetPatient' element={<GetPatient/>} />
+
+               <Route exact path='/DoctorDash' element={<DoctorDash/>} />
+               <Route exact path='/signup' element={<Signup/>} />
+              
+
 
                {/* <Route exact path='/doctors/deleteDoctorsById/:doctorId' element={<DeleteDoctor/>} /> */}
 
-               <Route exact path='/getPatient' element={<GetPatient/>} />
-               <Route exact path='/Appointment' element={<BookAppointment/>} />
-               {/* <Route exact path='/appointment' element={<AddAppointment/>} /> */}
+
+               <Route exact path='/doctor/getPatient' element={<GetPatient/>} />
+               <Route exact path='/Appointment/appointment/BookAppointment' element={<BookAppointment/>} />
+                <Route exact path='/appointment' element={<AddAppointment/>} /> 
 
                <Route path="/about" element={<AboutUs></AboutUs>} />
               </Routes>

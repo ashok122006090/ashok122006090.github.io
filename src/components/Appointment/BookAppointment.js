@@ -8,17 +8,17 @@ class BookAppointment extends React.Component {
     constructor(props){
         super(props)
         this.state={
-        //     appointmentId:'',
-        //     appointment_date :'',
-        //  symptoms :'',
-        //  doctorId : '',
-        //  patientId :''
+    //        appointmentId :'',
+    //        appointment_date :'',
+    //   symptoms:'',
+    //      doctorId : '',
+    //       patientId :'',
         appointment: new Appointment(),
             appointment: []
             
         }
         this.Service= new AppointmentService();
-        this.changeAppointmentIdHandler= this.changeAppointmentIdHandler.bind(this);
+       // this.changeAppointmentIdHandler= this.changeAppointmentIdHandler.bind(this);
         this.changeAppointmentDateHandler= this.changeAppointmentDateHandler.bind(this);
          this.changeSymptomsHandler= this.changeSymptomsHandler.bind(this);
          this.changeDoctorHandler= this.changeDoctorHandler.bind(this);
@@ -29,7 +29,7 @@ class BookAppointment extends React.Component {
     }
     saveAppointment=(e)=>{
         e.preventDefault();
-        let appointment = {appointmentId:this.state.appointmentId,appointment_date:this.state.appointment_date,symptoms:this.state.symptoms,
+        let appointment = {appointment_date:this.state.appointment_date,symptoms:this.state.symptoms,
             doctorId:this.state.doctorId,patientId:this.state.patientId};
         
 
@@ -40,9 +40,9 @@ class BookAppointment extends React.Component {
         });
 
     }
-    changeAppointmentIdHandler= (event)=>{
-        this.setState({appointmentId:event.target.value});
-    }
+    // changeAppointmentIdHandler= (event)=>{
+    //     this.setState({appointmentId:event.target.value});
+    // }
     changeAppointmentDateHandler= (event)=>{
         this.setState({appointment_date:event.target.value});
     }
@@ -71,11 +71,11 @@ class BookAppointment extends React.Component {
                            <h3 className="text-center"> Book Appointment  </h3>
                            <div className="card-body">
                                <form>
-                               <div className="form-group">
+                               {/* <div className="form-group">
                                        <label>appointment_Id</label>
                                        <input placeholder=" " name="appointmentId"   className="form-control" type="number"
                                        value={this.state.appointmentId} onChange={this.changeAppointmentIdHandler}/>
-                                   </div>
+                                   </div> */}
                                    <div className="form-group">
                                        <label>appointment_date</label>
                                        <input placeholder=" " name="appointment_date"   className="form-control" type="date"
@@ -88,12 +88,12 @@ class BookAppointment extends React.Component {
                                    </div>
                                    <div className="form-group">
                                        <label>doctorId</label>
-                                       <input placeholder=" " name="doctorId"  className="form-control" type="number"
+                                       <input placeholder=" " name="doctorid"  className="form-control" type="number"
                                        value={this.state.doctorId} onChange={this.changeDoctorHandler}/>
                                    </div>
 
                                   <div className="form-group">
-                                       <label> Enter Patient Id</label>
+                                       <label>  Patient Id</label>
                                        <input  placeholder=" " name="patient_id" className="form-control" type="number"
                                        value={this.state.patientId} onChange={this.changePatientHandler}/>
                                    </div>

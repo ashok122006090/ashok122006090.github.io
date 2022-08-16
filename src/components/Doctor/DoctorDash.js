@@ -26,16 +26,18 @@ function DoctorDash() {
   return (
     <div>
         <div className='mt-5'>
-        <Button type="Submit" variant="success" size="lg" > <Link to={`./AddDoctors`} target={"_blank"}>
+        <Button type="Submit" variant="success" size="lg" > <Link to={`./AddDoctors`} >
          Add Doctor</Link></Button>{' '}
-        <Button type="Submit" variant="warning" size="lg"><Link to={`./GetDoctor`} target={"_blank"}>View Doctor</Link></Button>{' '}
-        {/* <Button type="Submit" variant="warning" size="lg" onClick={()=>addCourse()}>View Admission</Button>{' '}
+        <Button type="Submit" variant="warning" size="lg"><Link to={`./GetDoctor`} >View Doctor</Link></Button>{' '}
+        <Button type="Submit" variant="warning" size="lg"><Link to={`./GetPatient`} >View Patient</Link></Button>{' '}
+
+         {/* <Button type="Submit" variant="warning" size="lg" onClick={()=>addCourse()}>View Admission</Button>{' '}
         <Button type="Submit" variant="info" size="lg" onClick={()=>viewByIdCourse()}>Show Admission by CourseId</Button>{' '}
-        <Button type="Submit" variant="info" size="lg" onClick={()=>viewByIdCourse()}>Show Admission By date </Button>{' '} */}
+        <Button type="Submit" variant="info" size="lg" onClick={()=>viewByIdCourse()}>Show Admission By date </Button>{' '}  */}
         </div>
 
         <br/>
-        <img style={imgStyle} src="images/course.png"></img>
+        
     </div>
   )
 }

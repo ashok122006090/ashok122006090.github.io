@@ -3,11 +3,11 @@ import AddDoctors from '../components/Doctor/AddDoctors';
 class DoctorService {
     baseUrl = `http://localhost:8082/doctors`;
     getDoctors() {
-        alert("inside get all doctor")
+       // alert("inside get all doctor")
         return axios.get(this.baseUrl);
     }
     addDoctors(doctor) {
-        console.log("inside service"+JSON.stringify(doctor))
+    //    console.log("inside service"+JSON.stringify(doctor))
         return axios.post(this.baseUrl, doctor);
     }
     deleteDoctorById(doctorId) {

@@ -15,7 +15,7 @@ class GetDoctor extends React.Component {
     componentDidMount() {
         this.doctorService.getDoctors()
             .then((result) => {
-                alert(JSON.stringify(result));
+               // alert(JSON.stringify(result));
                 this.setState({ doctors: result.data });
             })
             .catch((error) => {
@@ -46,20 +46,21 @@ class GetDoctor extends React.Component {
                 <td>{doc.doctorName}</td>
                 <td>{doc.specialization}</td>
                 <td>{doc.date}</td>
-                <td><Link className="btn btn-warning" to={{ pathname:`/updateDoctors/${doc.doctorId}` }}>Update</Link></td>
+                <td><Link className="btn btn-warning" to={{ pathname:`/DoctorDash/GetDoctor/updateDoctors` }}>Update</Link></td>
                 <td><button className="btn btn-danger"
                 onClick={(e) => {
                 e.preventDefault();
                 this.doctorService.deleteDoctorById(doc.doctorid)
                 .then((result) => {
-                this.doctorService.deleteDoctorById()
+                this.doctorService.getDoctors()
                 .then((result2) => {
                 this.setState({ doctors: result2.data });
                 })
-                .catch((error) => { alert("error"); });
+                .catch((error) => { alert("cant delete");
+             });
             })
              .catch((error) => {
-              alert("error");
+              alert("cant delete");
               });
                 }}>Delete</button></td> </tr>
              ))}

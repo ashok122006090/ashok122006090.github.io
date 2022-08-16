@@ -2,7 +2,7 @@ import Header from './components/Header';
 import { BrowserRouter as Router, Route, Routes ,Link} from 'react-router-dom';
 import AddDoctors from './components/Doctor/AddDoctors';
 import UpdateDoctor from './components/Doctor/UpdateDoctor';
-import DeleteDoctor from './components/Doctor/DeleteDoctor';
+
 import GetDoctor from './components/Doctor/GetDoctor';
 import FirstPage from './components/FirstPage';
 
