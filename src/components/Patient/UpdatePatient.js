@@ -1,89 +1,93 @@
-import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router";
-import { Link } from "react-router-dom";
-import PatientService from "../../service/PatientService";
-import Patient from "../../model/Patient";
+import {Formik,Form,Field,ErrorMessage} from "formik";
+import axios from "axios";
+// import "./updateuser.css";
+function UpdatePatient(){
+      let handleSubmit = (values) => {
+        let requestBody = {
+      
+        
+       
+        
+        patientId: values.patientId,
+        patientName: values.patientName,
+        patientAge:values.patientAge,
+        patientContactNo: values.patientContactNo,
+    };
+        axios
+          .put("http://localhost:8082/patient", requestBody)
+          .then((response) => alert("update successful"))
+          .catch((error) => alert(error));
 
-function UpdatePatient() {
-    const [state, setState] = useState({ patient: new Patient() });
-    const [doctors, setPatient] = useState([]);
-    const [error, setError] = useState({
-        idError: "",
-        nameError: "",
-    })
-    const [date, setDate] = useState('');
+    };
+        
+        let handleValidate=(values)=>{
+            const errors={};
+            if (!values. patientId) {
+                errors. patientid = " cannot be empty";
+              }
+            if (!values.patientName) {
+               errors.patientName = " cannot be empty";
+             }
+             if(!values.patientAge){
+               errors.patientAge=" cannot be empty"
+             }
+             if(!values.patientContactNo){
+               errors.patientContactNo=" cannot be empty"
+             }
+             return errors;
+            };
+    return <div className="update-container d-flex flex-column align-items-center" >
+            <h1>Update profile</h1>
+            <Formik initialValues={{
+          patientId:"",
+          patientName: "",
+          patientAge: "",
+          patientContactNo: "",
+        }}
+        onSubmit={(e) => handleSubmit(e)}
+        validate={(e)=>handleValidate(e)}>
+        
+                 {(props)=>(
+                     <Form >
+                          <div>
+                         <label className="form-label" >ID</label>
+                         <Field type="number"  name="patientId"className="form-control"/>
+                         <ErrorMessage  name="patientId">
+                          {(error) => <p>{error}</p>}
+                          </ErrorMessage>
+                         </div>
+                         <div>
+                         <label className="form-label" >PatientName</label>
+                         <Field type="text"  name="patientName" className="form-control"/>
+                         <ErrorMessage  name="patientName">
+                          {(error) => <p>{error}</p>}
+                          </ErrorMessage>
+                         </div>
+                        <div>
+                        <label className="form-label">Patient Age</label>
+                         <Field type="number"  name="patientAge"className="form-control" />
+                         <ErrorMessage  name="patientAge">
+                          {(error) => <p>{error}</p>}
+                          </ErrorMessage>
+                         </div>
+                         <div>
+                         <label className="form-label"> Contact No</label>
+                         <Field type="tel" name="patientContactNo"className="form-control" />
+                         <ErrorMessage  name="patientContactNo">
+                          {(error) => <p>{error}</p>}
+                          </ErrorMessage>
+                         </div>
+                         <div>
+              <button  type="submit"  className="btn btn-primary update-btn">
+                update
+              </button>
+            </div>
+                     </Form>
+                 )
+                 }
 
-    let service = new PatientService();
-    const { empId } = useParams();
-    const navigate = useNavigate();
-    useEffect(() => {
-        service.findPatientById(empId).then((result) => {
-            alert("inside updated"+JSON.stringify(result.data));
-            setState({ patient: result.data })
-        }).catch((error) => {
-            alert(error);
-        });
-
-        service.getPatient()
-            .then((result) => {
-                let docs = result.data.map((doc) => {
-                    alert("id is "+JSON.stringify(result.data));
-                    return { value: doc.patientId, display: doc.patientName };
-                });
-                
-                
-               
-            }).catch((error2) => {
-                alert(JSON.stringify("error: " + error2));
-            });
-
-    }, []);
-    return (
-        <div>
-          
-            <form>
-                <div>
-                    <input className="form-control" type="text" id="patientId" placeholder="Enter Patient Id"
-                        value={state.patient.patientId}
-                        readOnly={true}
-                    />
-                </div>
-                <div>
-                    <div className="alert-danger">{error.nameError}</div>
-                    <input className="form-control my-2" type="text" id="patientName" placeholder="Enter Patient Name"
-                        value={state.patient.patientName}
-                        onChange={(e) => setState({ employee: { ...state.patient, patientName: e.target.value } })}
-                    />
-                </div>
-                <div>
-                    <div className="alert-danger">{error.scoreError}</div>
-                    <input className="form-control" type="text" id="patientAge" placeholder="Enter PatientAge"
-                        value={state.patient.patientAge}
-                        onChange={(e) => setState({ patient: { ...state.patient, patientAge: e.target.value } })}
-                    />
-                </div>
-                <div>
-                    <div className="alert-danger">{error.scoreError}</div>
-                    <input className="form-control" type="text" id="patientContactNo" placeholder="Enter Patient Contact No"
-                        value={state.patient.patientContactNo}
-                        onChange={(e) => setState({ patient: { ...state.patient, patientContactNo: e.target.value } })}
-                    />
-                </div>
-                <button className="btn btn-outline-primary mt-3" onClick={
-                    (e) => {
-                        e.preventDefault();
-                        service.updatePatient(state.patient).then(() => {
-                            alert('Patient record is updated.');
-                            setState({ patient: new Patient() })
-                            navigate('/patient');
-                        }).catch((er) => {
-                            alert(er);
-                        })
-                    }
-                }>Update Patient</button>
-                <Link className="btn btn-outline-primary mt-3 ml-3" to='/patient'>Cancel</Link>
-            </form>
+            </Formik>
         </div>
-    );
 }
+
 export default UpdatePatient;

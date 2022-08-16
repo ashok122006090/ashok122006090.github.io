@@ -16,6 +16,8 @@ import AddAppointment from './Appointment/AddAppointment';
 import AdminLogin from './AdminLogin/AdminLogin';
 import HomePage from './HomePage';
 import Signup from './SignUp/Signup';
+import UpdatePatient from './Patient/UpdatePatient';
+import SignIn from './SignUp/SignIn';
 //import AddDoctors from './Doctor/AddDoctors';
 function FirstPage(){
     return (
@@ -50,19 +52,25 @@ function FirstPage(){
               
               <Route exact path='/adminlogin/doctors/addDoctors' element={<AddDoctors/>} />
                <Route exact path='/DoctorDash/GetDoctor/updateDoctors' element={<UpdateDoctor/>} />
+               <Route exact path='/DoctorDash/GetPatient/updatePatient' element={<UpdatePatient/>} />
+
+
                <Route exact path='/adminlogin/doctors/viewDoctors' element={<ViewDoctors/>} />
                <Route exact path='/DoctorDash/GetPatient' element={<GetPatient/>} />
 
                <Route exact path='/DoctorDash' element={<DoctorDash/>} />
+             
+             
                <Route exact path='/signup' element={<Signup/>} />
               
-
+               <Route exact path='/Appointment/Appointment/signin' element={<SignIn/>} />
 
                {/* <Route exact path='/doctors/deleteDoctorsById/:doctorId' element={<DeleteDoctor/>} /> */}
 
 
                <Route exact path='/doctor/getPatient' element={<GetPatient/>} />
                <Route exact path='/Appointment/appointment/BookAppointment' element={<BookAppointment/>} />
+
                 <Route exact path='/appointment' element={<AddAppointment/>} /> 
 
                <Route path="/about" element={<AboutUs></AboutUs>} />

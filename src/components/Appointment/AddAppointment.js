@@ -86,7 +86,7 @@ class AddAppointment extends React.Component {
                 </div>
 
                 <div>
-      <Button style={{margin:"30px"}} variant="contained" color="error"><Link to={`./appointment/BookAppointment`} >
+      <Button style={{margin:"30px"}} variant="contained" color="error"><Link to={`./Appointment/signin`} >
         BookAppointment</Link></Button>
    
       </div>

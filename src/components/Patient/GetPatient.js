@@ -50,7 +50,7 @@ class GetPatient extends React.Component {
                                                 <td>{pat.patientAge}</td>
                                                 <td>{pat.patientContactNo}</td>
                                                  
-                                                <td><Link className="btn btn-warning" to={{ pathname: `/patient/update/${pat.patientId}`}}>Update</Link></td>
+                                                <td><Link className="btn btn-warning" to={{ pathname: `/DoctorDash/GetPatient/updatePatient`}}>Update</Link></td>
                                                 <td><button className="btn btn-danger"
                                                     onClick={(e) => {
                                                         e.preventDefault();
