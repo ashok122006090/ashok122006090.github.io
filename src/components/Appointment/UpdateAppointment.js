@@ -4,15 +4,18 @@ import axios from "axios";
 function UpdateAppointment(){
       let handleSubmit = (values) => {
         let requestBody = {
-      
-        
-       
-        
-        appointmentId: values.appointmentId,
-        patientId: values.patientId,
-        doctorId:values.doctorId,
-        symptoms: values.symptoms,
-        appointment_date: values.appointment_date,
+            appointmentId : values.appointmentId,
+            
+            patient: {
+                patientId: values.patientId,
+                
+            },
+            doctor: {
+               
+                doctorid : values.doctorid,
+            },
+            symptoms: values.symptoms,
+            appointmentDate: values.appointmentDate,
     };
         axios
           .put("http://localhost:8082/appointment", requestBody)
@@ -27,16 +30,16 @@ function UpdateAppointment(){
                 errors. appointmentId = " cannot be empty";
               }
             if (!values.patientId) {
-               errors.patientId = " cannot be empty";
+               errors.patient.patientId = " cannot be empty";
              }
-             if(!values.doctorId){
-               errors.doctorId=" cannot be empty"
+             if(!values.doctorid){
+               errors.doctor.doctorid=" cannot be empty"
              }
              if(!values.symptoms){
                errors.symptoms=" cannot be empty"
              }
-             if(!values.appointment_date){
-                errors.appointment_date=" cannot be empty"
+             if(!values.appointmentDate){
+                errors.aeppointmentDate=" cannot be empty"
               }
              return errors;
             };
@@ -45,9 +48,9 @@ function UpdateAppointment(){
             <Formik initialValues={{
           appointmentId:"",
           patientId: "",
-          doctorId: "",
+          doctorid: "",
           symptoms: "",
-          appointment_date: "",
+          appointmentDate: "",
         }}
         onSubmit={(e) => handleSubmit(e)}
         validate={(e)=>handleValidate(e)}>
@@ -64,7 +67,7 @@ function UpdateAppointment(){
 
                          <div>
                          <label className="form-label" >Patient ID</label>
-                         <Field type="text"  name="patientId" className="form-control"/>
+                         <Field type="number"  name="patientId" className="form-control"/>
                          <ErrorMessage  name="patientId">
                           {(error) => <p>{error}</p>}
                           </ErrorMessage>
@@ -72,8 +75,8 @@ function UpdateAppointment(){
 
                         <div>
                         <label className="form-label">Doctor ID </label>
-                         <Field type="number"  name="doctorId"className="form-control" />
-                         <ErrorMessage  name="doctorId">
+                         <Field type="number"  name="doctorid"className="form-control" />
+                         <ErrorMessage  name="doctorid">
                           {(error) => <p>{error}</p>}
                           </ErrorMessage>
                          </div>
@@ -88,8 +91,8 @@ function UpdateAppointment(){
 
                          <div>
                          <label className="form-label"> Appointment Date </label>
-                         <Field type="date" name="date"className="form-control" />
-                         <ErrorMessage  name="date">
+                         <Field type="date" name="appointmentDate"className="form-control" />
+                         <ErrorMessage  name="appointmentDate">
                           {(error) => <p>{error}</p>}
                           </ErrorMessage>
                          </div>

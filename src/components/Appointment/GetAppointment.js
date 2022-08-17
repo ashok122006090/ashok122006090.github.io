@@ -47,7 +47,7 @@ class GetAppointment extends React.Component {
                                             <tr>
                                                 <td>{appmnt.appointmentId}</td>
                                                 <td>{appmnt.patient.patientId}</td>
-                                                <td>{appmnt.doctor.doctorId}</td>
+                                                <td>{appmnt.doctor.doctorid}</td>
                                                 <td>{appmnt.symptoms}</td>
                                                 <td>{appmnt.appointmentDate}</td>
                                                  

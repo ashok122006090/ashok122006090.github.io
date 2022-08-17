@@ -5,6 +5,7 @@ class AppointmentService {
         return axios.get(this.baseUrl);
     }
     addAppointment(appointment) {
+        console.log("inside service"+JSON.stringify(appointment));
         return axios.post(this.baseUrl, appointment);
     }
     deleteAppointmentById(appointmentId) {

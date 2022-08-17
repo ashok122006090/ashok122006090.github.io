@@ -13,7 +13,7 @@ function HomePage() {
   return (
     <div>
         <div className="container p-1 my-3 w-75 mt-5" >
-        <Alert variant="success">
+        <Alert variant="info">
             <Alert.Heading>Welcome to Smart Covid Clinic , where convenience meets care.</Alert.Heading>
              <p>
             We re here to make healthcare better by making it easier for you to find, book and manage all your healthcare online. All in one place. Anytime.

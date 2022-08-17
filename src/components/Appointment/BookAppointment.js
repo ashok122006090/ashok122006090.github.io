@@ -1,115 +1,133 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from 'react-router';
-import { Link } from "react-router-dom";
-import Appointment from "../../model/Appointment";
 import AppointmentService from "../../service/AppointmentService";
+import Doctor from "../../model/Appointment";
+import Patient from "../../model/Patient";
+import { Link } from "react-router-dom";
 
-class BookAppointment extends React.Component {
-    constructor(props){
-        super(props)
-        this.state={
-    //        appointmentId :'',
-    //        appointment_date :'',
-    //   symptoms:'',
-    //      doctorId : '',
-    //       patientId :'',
-        appointment: new Appointment(),
-            appointment: []
+
+import {Formik,Form,Field,ErrorMessage} from "formik";
+import axios from "axios";
+//import "./signup.css";
+function BookAppointment(){
+      let handleSubmit = (values) => {
+        let requestBody = {
+            appointmentId : values.appointmentId,
             
-        }
-        this.Service= new AppointmentService();
-       // this.changeAppointmentIdHandler= this.changeAppointmentIdHandler.bind(this);
-        this.changeAppointmentDateHandler= this.changeAppointmentDateHandler.bind(this);
-         this.changeSymptomsHandler= this.changeSymptomsHandler.bind(this);
-         this.changeDoctorHandler= this.changeDoctorHandler.bind(this);
-         this.changePatientHandler= this.changePatientHandler.bind(this);
-         
+            patient: {
+                patientId: values.patientId,
+                // "patientName": "Rama Swamy",
+                // "patientAge": 48,
+                // "patientContactNo": 8553623237
+            },
+            doctor: {
+                // "date": "2022-08-18",
+                // "specialization": "General",
+                // "doctorName": "Sandhya",
+                doctorid : values.doctorid,
+            },
+            symptoms: values.symptoms,
+            appointmentDate: values.appointmentDate,
 
-        this.saveAppointment=this.saveAppointment.bind(this);
-    }
-    saveAppointment=(e)=>{
-        e.preventDefault();
-        let appointment = {appointment_date:this.state.appointment_date,symptoms:this.state.symptoms,
-            doctorId:this.state.doctorId,patientId:this.state.patientId};
+            // appointmentId : values.appointmentId,
+            
+            // patientId: values.Patient.patientId,
         
+            // doctorid : values.Doctor.doctorid,
 
-        console.log('appointment =>' + JSON.stringify(appointment));
-
-       this.Service.addAppointment(appointment).then(res =>{
-           this.props.history.push('/Appointment'); 
-        });
-
-    }
-    // changeAppointmentIdHandler= (event)=>{
-    //     this.setState({appointmentId:event.target.value});
-    // }
-    changeAppointmentDateHandler= (event)=>{
-        this.setState({appointment_date:event.target.value});
-    }
-    changeSymptomsHandler= (event)=>{
-        this.setState({symptoms:event.target.value});
-    }
-    changeDoctorHandler= (event)=>{
-        this.setState({doctorId:event.target.value});
-    }
-    changePatientHandler= (event)=>{
-        this.setState({patientId:event.target.value});
-    } 
-        cancel(){
-            this.props.history.push('/Appointment');
-
-        }
+            // symptoms: values.symptoms,
+            
+            // appointmentDate: values.appointmentDate,
+            
         
-    
+        };
+        axios
+          .post("http://localhost:8082/appointment", requestBody)
+          .then((response) => alert("Appointment Booked succesfully "))
+          .catch((error) => alert(error));
 
-    render() {
-        return (
-            <div>
-               <div className="container">
-                   <div className="row">
-                       <div className="card col-md-6 offset-md-3 offset-md-3">
-                           <h3 className="text-center"> Book Appointment  </h3>
-                           <div className="card-body">
-                               <form>
-                               {/* <div className="form-group">
-                                       <label>appointment_Id</label>
-                                       <input placeholder=" " name="appointmentId"   className="form-control" type="number"
-                                       value={this.state.appointmentId} onChange={this.changeAppointmentIdHandler}/>
-                                   </div> */}
-                                   <div className="form-group">
-                                       <label>appointment_date</label>
-                                       <input placeholder=" " name="appointment_date"   className="form-control" type="date"
-                                       value={this.state.appointment_date} onChange={this.changeAppointmentDateHandler}/>
-                                   </div>
-                                   <div className="form-group">
-                                       <label>symptoms</label>
-                                       <input placeholder=" " name="symptoms"  className="form-control" type="text"
-                                       value={this.state.symptoms} onChange={this.changeSymptomsHandler}/>
-                                   </div>
-                                   <div className="form-group">
-                                       <label>doctorId</label>
-                                       <input placeholder=" " name="doctorid"  className="form-control" type="number"
-                                       value={this.state.doctorId} onChange={this.changeDoctorHandler}/>
-                                   </div>
-
-                                  <div className="form-group">
-                                       <label>  Patient Id</label>
-                                       <input  placeholder=" " name="patient_id" className="form-control" type="number"
-                                       value={this.state.patientId} onChange={this.changePatientHandler}/>
-                                   </div>
-
-                                 <button className="btn btn-success" onClick={this.saveAppointment}>Save</button>
-                                 <button className="btn btn-danger" onClick={this.cancel.bind(this)} style={{marginLeft:"10px"}}>Cancel</button>
-                               </form>
-                           </div>
-
-                       </div>
-
-                   </div>
-
-               </div>
+    };
+        
+        let handleValidate=(values)=>{
+            const errors={};
+            if(!values.appointmentId){
+                errors.appointmentId=" cannot be empty"
+              }
+             if(!values.patientId){
+               errors.patientId=" cannot be empty"
+             }
+             if(!values.doctorid){
+               errors.doctorid=" cannot be empty"
+             }
+             if(!values.symptoms){
+               errors.symptoms=" cannot be empty "
+             }
+             if(!values.appointmentDate){
+                errors.appointmentDate=" cannot be empty "
+              }
+             return errors;
+            };
+    return <div className="signup-container d-flex flex-column align-items-center" >
+            <h1 style={{color:"white"}}>Book appointment</h1>
+            <Formik initialValues={{
+         // email: "",
+         appointmentId: "",
+         patientId: "",
+         doctorid: "",
+         symptoms: "",
+         appointmentDate: "",
+        }}
+        onSubmit={(e) => handleSubmit(e)}
+        validate={(e)=>handleValidate(e)}>
+        
+                 {(props)=>(
+                     <Form >
+                         <div >
+                        <label className="form-label">Appointment ID</label>
+                         <Field type="number"  name="appointmentId" className="form-control"/>
+                         <ErrorMessage  name="appointmentId">
+                          {(error) => <p>{error}</p>}
+                          </ErrorMessage>
+                         </div>
+                        <div >
+                        <label className="form-label">Patient ID</label>
+                         <Field type="patientid"  name="patientId" className="form-control"/>
+                         <ErrorMessage  name="patientId">
+                          {(error) => <p>{error}</p>}
+                          </ErrorMessage>
+                         </div>
+                         <div >
+                         <label className="form-label">Doctor ID</label>
+                         <Field type="number" name="doctorid" className="form-control"/>
+                         <ErrorMessage  name="doctorid">
+                          {(error) => <p>{error}</p>}
+                          </ErrorMessage>
+                         </div>
+                         <div>
+                         <label className="form-label">Symptoms</label>
+                         <Field type="text" name="symptoms"className="form-control" />
+                         <ErrorMessage  name="symptoms">
+                          {(error) => <p>{error}</p>}
+                          </ErrorMessage>
+                         </div>
+                         <div>
+                         <label className="form-label">Date</label>
+                         <Field type="date" name="appointmentDate"className="form-control" />
+                         <ErrorMessage  name="appointmentDate">
+                          {(error) => <p>{error}</p>}
+                          </ErrorMessage>
+                         </div>
+                         <div>
+              <button type="submit" className="btn btn-danger login-btn">
+                Book Appointment  
+              </button>
             </div>
-        )
-    }
+                     </Form>
+                 )
+                 }
+
+            </Formik>
+        </div>
 }
-export default BookAppointment;
+
+export default BookAppointment;

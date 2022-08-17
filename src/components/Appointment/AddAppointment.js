@@ -65,10 +65,10 @@ class AddAppointment extends React.Component {
                        //    console.log(imageName);
                           return(
                          <div className="d-flex align-items-center justify-content-center">
-                         <Box style={{margin:"50px",width:"80%" }} component={Paper} className="box" >    
-                         <Card variant="outlined" component={Paper} className="card-container">
+                         <Box  style={{margin:"50px",width:"80%" }} component={Paper} className="box" >    
+                         <Card variant="dark" component={Paper} className="card-container">
                          <CardContent style={{padding:"0px" }}className="cardcontent-container">
-                         {/* <div><img src ={imageName} alt={imageName  }/></div> */}
+                          <div><img src = "https://image.shutterstock.com/image-photo/doctor-260nw-558136654.jpg"  /></div> 
                          <div className="cardtext">
                          <h4>Doctor Id:{doc.doctorid} </h4>
                          <h5>Doctor Name :{doc.doctorName} </h5>

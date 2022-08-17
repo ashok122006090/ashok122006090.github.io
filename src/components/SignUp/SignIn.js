@@ -38,7 +38,7 @@ function SignIn() {
         
         <div className="container p-5 my-5 border w-25 mt-5 border border-info rounded" >
 
-        <img style={imgStyle} src="images/login.png"></img>
+        {/* <img style={imgStyle} src="images/login.png"></img> */}
 
           <div className='p-1 mt-3 mb-4 alert alert-info font-weight-bold'>
             <h3>Login</h3>

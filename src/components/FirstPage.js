@@ -26,7 +26,8 @@ function FirstPage(){
         <div>
            
            <Router>
-        <Navbar bg="light" variant="light">
+        {/* <Navbar bg="dark" variant="dark">
+
          <Container>
          <Navbar.Brand style={{letterSpacing:'2px',textShadow: '1px 1px gray',fontSize:'24px'}} href="/"><>SmartCovidClinicApp</></Navbar.Brand>
          <Nav className="me-auto">
@@ -37,7 +38,20 @@ function FirstPage(){
            <Nav.Link href="/about">About Us</Nav.Link>
            <Nav.Link href="/signup">SignUp</Nav.Link>
           
+         </Nav> */}
+         <Navbar bg="dark" variant="dark">
+         <Container>
+         <Navbar.Brand style={{letterSpacing:'2px',textShadow: '2px 2px 8px #FF0000',fontSize:'24px'}} href="/"><>SmartCovidClinicApp</></Navbar.Brand>
+         <Nav className="me-auto">
+           <Nav.Link style={{letterSpacing:'1px',textShadow: '1px 1px #FF0000',fontSize:'16px'}}href="/">Home</Nav.Link>
+           <Nav.Link style={{letterSpacing:'1px',textShadow: '1px 1px #FF0000',fontSize:'16pz'}}href="/Appointment">Book appointment</Nav.Link>
+           <Nav.Link style={{letterSpacing:'1px',textShadow: '1px 1px #FF0000',fontSize:'16pz'}}href="/adminlogin">AdminManagement</Nav.Link>
+            
+           <Nav.Link style={{letterSpacing:'1px',textShadow: '1px 1px #FF0000',fontSize:'16pz'}}href="/about">About Us</Nav.Link>
+           <Nav.Link style={{letterSpacing:'1px',textShadow: '1px 1px #FF0000',fontSize:'16px'}}href="/signup">SignUp</Nav.Link>
+          
          </Nav>
+        
          </Container>
        </Navbar>
             

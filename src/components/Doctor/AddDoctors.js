@@ -44,7 +44,7 @@ function AddDoctors(){
              return errors;
             };
     return <div className="signup-container d-flex flex-column align-items-center" >
-            <h1 style={{color:"white"}}>Signup</h1>
+            <h1 style={{color:"white"}}>Add Doctor</h1>
             <Formik initialValues={{
          // email: "",
          date: "",
