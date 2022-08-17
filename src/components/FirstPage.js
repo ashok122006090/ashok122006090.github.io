@@ -18,6 +18,8 @@ import HomePage from './HomePage';
 import Signup from './SignUp/Signup';
 import UpdatePatient from './Patient/UpdatePatient';
 import SignIn from './SignUp/SignIn';
+import GetAppointment from './Appointment/GetAppointment';
+import UpdateAppointment from './Appointment/UpdateAppointment';
 //import AddDoctors from './Doctor/AddDoctors';
 function FirstPage(){
     return (
@@ -53,7 +55,7 @@ function FirstPage(){
               <Route exact path='/adminlogin/doctors/addDoctors' element={<AddDoctors/>} />
                <Route exact path='/DoctorDash/GetDoctor/updateDoctors' element={<UpdateDoctor/>} />
                <Route exact path='/DoctorDash/GetPatient/updatePatient' element={<UpdatePatient/>} />
-
+               <Route exact path='/DoctorDash/GetAppointment/UpdateAppointment' element={<UpdateAppointment/>} />
 
                <Route exact path='/adminlogin/doctors/viewDoctors' element={<ViewDoctors/>} />
                <Route exact path='/DoctorDash/GetPatient' element={<GetPatient/>} />
@@ -69,6 +71,8 @@ function FirstPage(){
 
 
                <Route exact path='/doctor/getPatient' element={<GetPatient/>} />
+               <Route exact path='/DoctorDash/GetAppointment' element={<GetAppointment/>} />
+
                <Route exact path='/Appointment/appointment/BookAppointment' element={<BookAppointment/>} />
 
                 <Route exact path='/appointment' element={<AddAppointment/>} /> 

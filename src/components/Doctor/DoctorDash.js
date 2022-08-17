@@ -26,10 +26,12 @@ function DoctorDash() {
   return (
     <div>
         <div className='mt-5'>
-        <Button type="Submit" variant="success" size="lg" > <Link to={`./AddDoctors`} >
+        <Button type="Submit" variant="info" size="lg" > <Link to={`./AddDoctors`} >
          Add Doctor</Link></Button>{' '}
         <Button type="Submit" variant="warning" size="lg"><Link to={`./GetDoctor`} >View Doctor</Link></Button>{' '}
         <Button type="Submit" variant="warning" size="lg"><Link to={`./GetPatient`} >View Patient</Link></Button>{' '}
+        <Button type="Submit" variant="warning" size="lg"><Link to={`./GetAppointment`} >View Appointment</Link></Button>{' '}
+
 
          {/* <Button type="Submit" variant="warning" size="lg" onClick={()=>addCourse()}>View Admission</Button>{' '}
         <Button type="Submit" variant="info" size="lg" onClick={()=>viewByIdCourse()}>Show Admission by CourseId</Button>{' '}

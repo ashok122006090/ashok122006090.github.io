@@ -1,6 +1,6 @@
 class Appointment {
      appointmentId='';
-appointment_date ='';
+     appointmentDate ='';
      symptoms ='';
      doctorId = '';
      patientId =''
